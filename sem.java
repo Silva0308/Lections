@@ -29,7 +29,35 @@ public class sem {
             }
 
         }
+        public static String PMeth (int a, int b, int c, int d) {
+            if (a>b){
+                System.out.println("Число " + a + "больше числа "+ b);
+            }
+            if (a==b){
+                System.out.println("Число " + a + "равно числу "+ b);
+            }
+            String res = "";
+            while (b>a) {
+                if ( b%c ==0){
+                    res += String.format(" %d*", c);
+                    //System.out.printf("*%d ", c);
+                    b = b/c;
+                }
+                else{
+                    res += String.format(" %d+", d);
+                    //System.out.printf("+%d ", d);
+                    b-=d;
+                    }
+            }
+            
+            return res;
+        }
+        public static String reverseString(String str) {
+            return new StringBuilder(str).reverse().toString();
+          }
           public static void main(String[] args) {
-           System.out.println(myMeth(2, 10, 2, 1) );
+           System.out.println(myMeth(1, 25, 2, 3) );
+           String temp = PMeth(1, 25, 2, 3);
+           System.out.println(reverseString(temp));
           }  
     }
