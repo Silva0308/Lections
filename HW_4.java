@@ -13,7 +13,7 @@ class desk {
     }
 }
 
-public class lee {
+public class HW_4 {
     static int M = 5;
     static int N = 5;
 
