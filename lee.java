@@ -17,22 +17,22 @@ public class lee {
     static int M = 5;
     static int N = 5;
 
-    static boolean isValid(int mat[][], boolean visited[][], int row, int col) {
-        return ((row >= 0) && (row < M)) && ((col >= 0) && (col < N)) && (mat[row][col] == 1) && (!visited[row][col]);
+    static boolean isValid(int mat[][], boolean visit[][], int row, int col) {
+        return ((row >= 0) && (row < M)) && ((col >= 0) && (col < N)) && (mat[row][col] == 1) && (!visit[row][col]);
     }
 
-    private static void bfs(int matrix[][], int i, int j, int x, int y) {
+    private static void rate(int matrix[][], int i, int j, int x, int y) {
         int row[] = { -1, 0, 0, 1 };
         int col[] = { 0, -1, 1, 0 };
 
-        boolean[][] visited = new boolean[M][N];
+        boolean[][] visit = new boolean[M][N];
         Queue<desk
     > q = new LinkedList<desk
     >();
-        visited[i][j] = true;
+        visit[i][j] = true;
         q.add(new desk
     (i, j, 0));
-        int minimum_distance = Integer.MAX_VALUE;
+        int minDist = Integer.MAX_VALUE;
         while (!q.isEmpty()) {
             desk
          desk
@@ -44,13 +44,13 @@ public class lee {
             int dist = desk
         .distance;
             if (i == x && j == y) {
-                minimum_distance = dist;
+                minDist = dist;
                 break;
             }
 
             for (int k = 0; k < 4; k++) {
-                if (isValid(matrix, visited, i + row[k], j + col[k])) {
-                    visited[i + row[k]][j + col[k]] = true;
+                if (isValid(matrix, visit, i + row[k], j + col[k])) {
+                    visit[i + row[k]][j + col[k]] = true;
                     desk
                  n = new desk
                 (i + row[k], j + col[k], dist + 1);
@@ -59,10 +59,10 @@ public class lee {
             }
         }
 
-        if (minimum_distance == Integer.MAX_VALUE) {
+        if (minDist == Integer.MAX_VALUE) {
             System.out.print("Невозможно дойти");
         } else {
-            System.out.print("Кратчайщий путь: " + minimum_distance+" шагов");
+            System.out.print("Кратчайщий путь: " + minDist+" шагов");
         }
     }
 
@@ -74,6 +74,6 @@ public class lee {
                 { 0, 0, 0, 0, 1 },
                 { 1, 1, 1, 0, 1 },
                 { 1, 1, 0, 0, 0 } };
-        bfs(matrix, 1, 1, 3, 4);
+        rate(matrix, 1, 1, 3, 4);
     }
 }
